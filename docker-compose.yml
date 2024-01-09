@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  app:
+    restart: always
+    build: .
+    ports:
+      - '8080:8080'
+    expose:
+      - '8080'
+    depends_on:
+      - redis
+      - mysql
+  redis:
+    image: 'redis:6.2'
+    ports:
+      - '6379:6379'
+    expose:
+      - '6379'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+  mysql:
+    image: 'mysql:8.0'
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'otp_db'
+      MYSQL_TCP_PORT: 3307
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
+    ports:
+      - '3307:3307'
+    expose:
+      - '3307'

@@ -1,0 +1,10 @@
+{
+    "port": 8080,
+    "mysql":{
+        "connection_string": "root:@tcp(host.docker.internal:3307)/otp_db?parseTime=true"
+    },
+    "redis": {
+        "host": "redis:6379",
+        "password": ""
+    }
+}
